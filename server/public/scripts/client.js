@@ -77,6 +77,15 @@ function fetchTasks(){
 // delete task function
 function deleteTask(){
   console.log('it is gone forever');
+  let idToDelete = $(this).parent('li').data("id");
+  console.log(idToDelete);
+  $.ajax({
+    method: 'DELETE',
+    url: `/tasks/${idToDelete}`
+  }).then((response)=>{
+    fetchTasks();
+    console.log('all done :)');
+  })
 }
 
 // mark complete task function
