@@ -49,8 +49,6 @@ function renderTasks(tasksRes){
   $('.tasksList').empty()
   for (let task of tasksRes){
     if (task.complete === true){
-      $('.list-group-item').parent().css("background-color", "#9dFFB0");
-      $('.list-group-item').parent().css("text-decoration", "line-through");
       $('.tasksList').append(`
       <li class="list-group-item px-3 m" data-id="${task.id}">
       <h4>${task.name}</h4>
@@ -58,6 +56,8 @@ function renderTasks(tasksRes){
       <button type="button" class="btn btn-danger m-2 deleteBtn" style="float:right;">Delete</button>          
       </li>
       `)
+      $('.list-group-item').css("background-color", "#9dFFB0");
+      $('.list-group-item').css("text-decoration", "line-through");
     }
     else{
       $('.tasksList').append(`
