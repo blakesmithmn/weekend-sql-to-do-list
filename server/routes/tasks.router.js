@@ -70,6 +70,24 @@ tasksRouter.put('/:idToUpdate', (req,res)=> {
         })
 })
 // DELETE
+tasksRouter.delete('/:idToDelete', (req,res)=>{
+    let taskID = req.params.idToDelete;
+    console.log(taskID);
 
+    const sqlQuery = `
+        DELETE FROM "tasks"
+            WHERE "id"=$1;
+    `
+    const sqlValues = [taskID];
+
+    pool.query(sqlQuery,sqlValues)
+        .then((poolRes)=>{
+            res.sendStatus(200);
+        })
+        .catch((poolErr)=>{
+            console.log('delete is broken:', poolErr);
+        })
+    
+})
 
 module.exports = tasksRouter;
