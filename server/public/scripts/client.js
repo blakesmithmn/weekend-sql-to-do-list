@@ -78,6 +78,7 @@ function fetchTasks(){
 function deleteTask(){
   console.log('it is gone forever');
 }
+
 // mark complete task function
 function completeTask(){
   console.log('all done!');
