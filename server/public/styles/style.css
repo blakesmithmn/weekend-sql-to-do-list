@@ -23,3 +23,26 @@ body {
     font-family: 'crossing' !important;
 }
 
+li {
+    background-color: #F9A7B3;
+}
+li:nth-child(odd) {
+    background-color: #DBE2E6;
+}
+li:nth-child(even) {
+    background-color: #FFFFFA;
+}
+
+.deleteBtn{
+}
+
+.listHead {
+    background-color:#E2C7A1;
+    border-radius: 5px;
+    margin-bottom: 4px;
+}
+
+.cardStyles{
+    background-color: #FDF8E3;
+}
+
