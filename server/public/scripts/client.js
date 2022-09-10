@@ -9,6 +9,7 @@ $( document ).ready( function(){
 
 function clickHandlers() {
   $(document).on('click', '.deleteBtn', deleteTask);
+  $(document).on('click', '.completeBtn', completeTask);
   $('.submitBtn').on('click', addTask);
 };
 
@@ -47,13 +48,17 @@ function renderTasks(tasksRes){
   console.log('tasks rendered');
   $('.tasksList').empty()
   for (let task of tasksRes){
-    $('.tasksList').append(`
-    <li class="list-group-item px-3 m">
-        <input type="checkbox" id="checkbox1" class="m-4"> <label for="checkbox1"><h4>${task.name}</h4></label>
-        <button type="button" class="btn btn-danger m-2 deleteBtn" style="float:right;">Delete</button>          
-    </li>
-    `)
-  }
+      $('.tasksList').append(`
+      <li class="list-group-item px-3 m" data-id="${task.id}">
+      <h4>${task.name}</h4>
+      <p> ${task.notes} </p>
+      <button type="button" class="btn btn-danger m-2 deleteBtn" style="float:right;">Delete</button>
+      <button type="button" class="btn btn-outline-success p-1 completeBtn" style="float:left;"> mark complete</button>
+          
+      </li>
+      `)
+    }
+  
 };
 
 // GET function
@@ -74,5 +79,18 @@ function deleteTask(){
   console.log('it is gone forever');
 }
 // mark complete task function
-
+function completeTask(){
+  console.log('all done!');
+  let idToUpdate = $(this).parent().data('id');
+  console.log(idToUpdate);
+  $.ajax({
+    method: 'PUT',
+    url: `/tasks/${idToUpdate}`
+  }).then((response)=>{
+    // fetchTasks();
+    $(this).parent().css("background-color", "#9dFFB0");
+    $(this).parent().css("text-decoration", "line-through");
+  })
+}
 // 
+

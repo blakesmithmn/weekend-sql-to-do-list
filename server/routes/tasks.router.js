@@ -9,7 +9,7 @@ const pool = require('../modules/pool.js');
 tasksRouter.get('/', (req,res) =>{
     const sqlQuery = `
         SELECT * FROM "tasks"
-        ORDER BY "id";
+        ORDER BY "id" DESC;
     `
 
 pool.query(sqlQuery)
@@ -51,7 +51,24 @@ tasksRouter.post('/', (req,res)=>{
 
 })
 // PUT / UPDATE
+tasksRouter.put('/:idToUpdate', (req,res)=> {
+    console.log(req.params);
+    let idToUpdate = req.params.idToUpdate;
+    let sqlQuery = `
+        UPDATE "tasks"
+        SET complete = TRUE
+            WHERE id = $1;
+    `
+    let sqlValues = [idToUpdate];
 
+    pool.query(sqlQuery,sqlValues)
+        .then((poolRes)=>{
+                res.sendStatus(200);
+        })
+        .catch((poolErr)=>{
+            res.sendStatus('error is', poolErr);
+        })
+})
 // DELETE
 
 
