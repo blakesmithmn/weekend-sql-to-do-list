@@ -4,10 +4,12 @@ console.log( 'js' );
 $( document ).ready( function(){
   console.log( 'JQ' );
   fetchTasks();
+  clickHandlers();
 }); // end doc ready
 
 function clickHandlers() {
-  
+  $(document).on('click', '.deleteBtn', deleteTask);
+  $('.submitBtn').on('click', addTask);
 };
 
 
@@ -22,7 +24,24 @@ function clickHandlers() {
 
 
 // add task function
-
+function addTask(){
+  console.log('added a task!')
+  const newTask = {
+    name: $('#taskInput').val(),
+    notes: $('#noteInput').val(),
+    complete: false,
+  };
+  $.ajax({
+    type: 'POST',
+    url: '/tasks',
+    data: newTask
+  }).then((tasksRes)=>{
+    console.log('Succes on /POST', tasksRes);
+    fetchTasks();
+    $('#taskInput').val('');
+    $('#noteInput').val('');
+  })
+};
 // render tasks function
 function renderTasks(tasksRes){
   console.log('tasks rendered');
@@ -51,7 +70,9 @@ function fetchTasks(){
   })
 };
 // delete task function
-
+function deleteTask(){
+  console.log('it is gone forever');
+}
 // mark complete task function
 
 // 
