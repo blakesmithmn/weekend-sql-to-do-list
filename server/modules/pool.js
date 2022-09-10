@@ -5,7 +5,7 @@ const pg = require('pg');
 const Pool = pg.Pool;
 
 const host = "localhost";
-const database = "tasks";
+const database = "weekend-to-do-app";
 
 // how DB connection is created/configured
 const pool = new Pool ({
