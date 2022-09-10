@@ -9,7 +9,7 @@ const pool = require('../modules/pool.js');
 tasksRouter.get('/', (req,res) =>{
     const sqlQuery = `
         SELECT * FROM "tasks"
-        ORDER BY "id";
+        ORDER BY "id" DESC;
     `
 
 pool.query(sqlQuery)
