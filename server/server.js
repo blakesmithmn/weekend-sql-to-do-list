@@ -2,14 +2,14 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000;
-const koalaRouter = require('./routes/koala.router.js');
+const tasksRouter = require('./routes/tasks.router.js');
 const pool = require('./modules/pool.js');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('server/public'));
 
 // ROUTES
-app.use('/koalas', koalaRouter)
+app.use('/tasks', tasksRouter)
 
 // Start listening for requests on a specific port
 app.listen(PORT, () => {

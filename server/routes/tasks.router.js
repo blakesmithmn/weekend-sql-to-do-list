@@ -1,5 +1,4 @@
 // BOILERPLATE
-const {Router} = require('express');
 const express = require('express');
 const tasksRouter = express.Router();
 

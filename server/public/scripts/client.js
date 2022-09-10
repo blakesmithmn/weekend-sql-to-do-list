@@ -1,4 +1,3 @@
-const { Router } = require("express");
 
 console.log( 'js' );
 
@@ -10,3 +9,13 @@ $( document ).ready( function(){
 function clickListeners() {
   
 }
+
+// add task function
+
+// render tasks function
+
+// delete task function
+
+// mark complete task function
+
+// 

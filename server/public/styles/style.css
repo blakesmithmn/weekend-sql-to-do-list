@@ -1,0 +1,25 @@
+/* COLOR PALETTE 
+#9dFFB0 (green)
+#81F1F7 (light blue)
+#FFFFFA (cream)
+#F9A7B3 (light pink)
+#F6CD61 (pastel yellow)
+#4D4D3F (dark green)
+#8A9EE4 (darker blue)
+
+END OF COLOR PALETTE */
+@font-face {
+    font-family: 'crossing';
+    src: url(./crossing.ttf), format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+body {
+    background-image: url(../images/tomnook.jpeg); 
+}
+
+#bigHead {
+    font-family: 'crossing' !important;
+}
+
