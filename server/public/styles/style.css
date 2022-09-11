@@ -47,3 +47,11 @@ li:nth-child(even) {
     background-color: #FDF8E3;
 }
 
+#time{
+    background-color: #4D4D3F;
+    color: white;
+    opacity: 40%;
+}
+
+
+
