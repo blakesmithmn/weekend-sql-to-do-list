@@ -5,6 +5,8 @@ $( document ).ready( function(){
   console.log( 'JQ' );
   fetchTasks();
   clickHandlers();
+  updateTime();
+
 }); // end doc ready
 
 function clickHandlers() {
@@ -119,4 +121,11 @@ function completeTask(){
   })
 }
 // 
+
+function updateTime() {
+  let date = new Date();
+  $('.time').text(date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }));
+}
+updateTime();
+setInterval(updateTime, 500);
 
