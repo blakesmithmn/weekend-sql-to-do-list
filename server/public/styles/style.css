@@ -34,7 +34,9 @@ li:nth-child(even) {
 }
 
 
-.deleteBtn{
+.complete{
+    background-color: #9dFFB0 !important;
+    text-decoration: line-through;
 }
 
 .listHead {

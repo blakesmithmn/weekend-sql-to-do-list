@@ -49,18 +49,29 @@ function addTask(){
 function renderTasks(tasksRes){
   console.log('tasks rendered');
   $('.tasksList').empty()
-  for (let task of tasksRes){
+  for (let i=0; i<tasksRes.length ; i ++){
+    let task = tasksRes[i];
+
+    if(!task.complete){
       $('.tasksList').append(`
       <li class="list-group-item px-3 m" data-id="${task.id}">
       <h4>${task.name}</h4>
       <p> ${task.notes} </p>
       <button type="button" class="btn btn-danger m-2 deleteBtn" style="float:right;">Delete</button>
       <button type="button" class="btn btn-outline-success p-1 completeBtn" style="float:left;"> mark complete</button>
-          
       </li>
-      `)
+      `);
     }
-  
+    else if (task.complete){
+      $('.tasksList').append(`
+      <li class="list-group-item px-3 m complete" data-id="${task.id}">
+      <h4>${task.name}</h4>
+      <p> ${task.notes} </p>
+      <button type="button" class="btn btn-danger m-2 deleteBtn" style="float:right;">Delete</button>
+      </li>
+      `);
+    }
+  }
 };
 
 // GET function
@@ -116,8 +127,11 @@ function completeTask(){
     url: `/tasks/${idToUpdate}`
   }).then((response)=>{
     // fetchTasks();
+    
+    $(this).parent().addClass("complete");
     $(this).parent().css("background-color", "#9dFFB0");
     $(this).parent().css("text-decoration", "line-through");
+    $(this).remove()
   })
 }
 // 
