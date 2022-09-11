@@ -76,16 +76,32 @@ function fetchTasks(){
 };
 // delete task function
 function deleteTask(){
-  console.log('it is gone forever');
-  let idToDelete = $(this).parent('li').data("id");
-  console.log(idToDelete);
-  $.ajax({
-    method: 'DELETE',
-    url: `/tasks/${idToDelete}`
-  }).then((response)=>{
-    fetchTasks();
-    console.log('all done :)');
+  swal({
+    title: "Are you sure?",
+    text: "Once deleted, you will not be able to recover this imaginary file!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
   })
+  .then((willDelete) => {
+    if (willDelete) {
+      console.log('it is gone forever');
+      let idToDelete = $(this).parent('li').data("id");
+      console.log(idToDelete);
+      $.ajax({
+        method: 'DELETE',
+        url: `/tasks/${idToDelete}`
+      }).then((response)=>{
+        fetchTasks();
+        console.log('all done :)');
+      })
+      swal("Poof! Your imaginary file has been deleted!", {
+        icon: "success",
+      });
+    } else {
+      swal("Your imaginary file is safe!");
+    }
+  });
 }
 
 // mark complete task function
