@@ -78,7 +78,7 @@ function fetchTasks(){
 function deleteTask(){
   swal({
     title: "Are you sure?",
-    text: "Once deleted, you will not be able to recover this imaginary file!",
+    text: "Once deleted, you will not be able to recover this task!",
     icon: "warning",
     buttons: true,
     dangerMode: true,
@@ -95,11 +95,11 @@ function deleteTask(){
         fetchTasks();
         console.log('all done :)');
       })
-      swal("Poof! Your imaginary file has been deleted!", {
+      swal("Forget about that Task - It's Gone!", {
         icon: "success",
       });
     } else {
-      swal("Your imaginary file is safe!");
+      swal("Cancelled Successfully!");
     }
   });
 }
