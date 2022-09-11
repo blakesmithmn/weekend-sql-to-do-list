@@ -119,6 +119,7 @@ function deleteTask(){
 
 // mark complete task function
 function completeTask(){
+  
   console.log('all done!');
   let idToUpdate = $(this).parent().data('id');
   console.log(idToUpdate);
@@ -126,8 +127,11 @@ function completeTask(){
     method: 'PUT',
     url: `/tasks/${idToUpdate}`
   }).then((response)=>{
-    // fetchTasks();
+    ////////////////////////////////
+    // SWEET ALERTS COMPLETE MESSAGE
+    ///////////////////////////////
     
+
     $(this).parent().addClass("complete");
     $(this).parent().css("background-color", "#9dFFB0");
     $(this).parent().css("text-decoration", "line-through");
