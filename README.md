@@ -19,18 +19,17 @@ Over the course of a weekend - we were tasked with creating a functional full-st
 
 ## Screen Shots
 
-Screenshot of the user interface:
+GIF briefly showing application features:
 ![](demo.gif)
-
-Displaying feedback to user inputs:
-![](delete.PNG)
 
 
 ## Description & Approach
-![](concept.PNG)
+
 
 As I continue to develop my personal workflow - I am trying to get into the habit of breaking down the complexity of the project at hand. One way I do this is by making a visual To-Do list / Flow Chart for me to follow. (like the one above). 
 In this particular assignment - I also gave myself the goal of setting a clear design concept from the start - which streamlined the front-end process of the work!
+
+![](concept.png)
 
 
 
