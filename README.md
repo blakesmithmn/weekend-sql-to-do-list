@@ -24,7 +24,7 @@ GIF briefly showing application features:
 
 
 ## Description & Approach
-![](concept.PNG)
+![](concept.png)
 
 As I continue to develop my personal workflow - I am trying to get into the habit of breaking down the complexity of the project at hand. One way I do this is by making a visual To-Do list / Flow Chart for me to follow. (like the one above). 
 In this particular assignment - I also gave myself the goal of setting a clear design concept from the start - which streamlined the front-end process of the work!
