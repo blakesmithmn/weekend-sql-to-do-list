@@ -28,23 +28,27 @@ function clickHandlers() {
 
 // add task function
 function addTask(){
-  console.log('added a task!')
   const newTask = {
     name: $('#taskInput').val(),
     notes: $('#noteInput').val(),
     complete: false,
   };
-  $.ajax({
-    type: 'POST',
-    url: '/tasks',
-    data: newTask
-  }).then((tasksRes)=>{
-    console.log('Succes on /POST', tasksRes);
-    fetchTasks();
-    $('#taskInput').val('');
-    $('#noteInput').val('');
-  })
-};
+  if(newTask.name){
+    $.ajax({
+      type: 'POST',
+      url: '/tasks',
+      data: newTask
+    }).then((tasksRes)=>{
+      console.log('Succes on /POST', tasksRes);
+      fetchTasks();
+      $('#taskInput').val('');
+      $('#noteInput').val('');
+    })
+  }
+  else {
+    swal("Oops!", "What do you need to get done!?", "error");
+  };
+}
 // render tasks function
 function renderTasks(tasksRes){
   console.log('tasks rendered');
@@ -131,6 +135,7 @@ function completeTask(){
     // SWEET ALERTS COMPLETE MESSAGE
     ///////////////////////////////
     
+    swal("Another one in the books!", "You've completed a task!", "success");
 
     $(this).parent().addClass("complete");
     $(this).parent().css("background-color", "#9dFFB0");

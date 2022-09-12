@@ -9,19 +9,14 @@
 
 END OF COLOR PALETTE */
 @font-face {
-    font-family: 'crossing';
-    src: url(./crossing.ttf), format('truetype');
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'roboto';
+    src: url(./roboto.ttf);
   }
 
 body {
     background-image: url(../images/tomnook.jpeg); 
 }
 
-#bigHead {
-    font-family: 'crossing' !important;
-}
 
 li {
     background-color: #F9A7B3;
@@ -54,6 +49,12 @@ li:nth-child(even) {
     color: white;
     opacity: 40%;
 }
+
+p {
+    font-family: roboto;
+    padding-left: 15px;
+}
+
 
 
 
