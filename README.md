@@ -12,7 +12,7 @@
 
 ## Description
 
-_Duration: 24 hour Sprint_
+_Duration: 18 hour Sprint_
 
 Over the course of a weekend - we were tasked with creating a functional full-stack web based application - letting users create and maintain a To-Do list. 
 
