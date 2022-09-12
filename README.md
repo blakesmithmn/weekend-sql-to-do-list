@@ -19,11 +19,8 @@ Over the course of a weekend - we were tasked with creating a functional full-st
 
 ## Screen Shots
 
-Screenshot of the user interface:
+GIF briefly showing application features:
 ![](demo.gif)
-
-Displaying feedback to user inputs:
-![](delete.PNG)
 
 
 ## Description & Approach
