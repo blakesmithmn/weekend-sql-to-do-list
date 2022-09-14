@@ -1,25 +1,52 @@
-// Import pg node module:
+/**
+* You'll need to use environment variables in order to deploy your
+* pg-pool configuration to Heroku.
+* It will look something like this:
+**/
+/* the only line you likely need to change is
+ database: 'prime_app',
+ change `prime_app` to the name of your database, and you should be all set!
+*/
+
 const pg = require('pg');
+const url = require('url');
 
-// Persistent connection to a database:
-const Pool = pg.Pool;
+let config = {};
 
-const host = "localhost";
-const database = "weekend-to-do-app";
+// We need a different pg configuration if we're running
+// on Heroku, vs if we're running locally.
+//
+// Heroku gives us a process.env.DATABASE_URL variable,
+// so if that's set, we know we're on heroku.
+if (process.env.DATABASE_URL) {
+  config = {
+    // We use the DATABASE_URL from Heroku to connect to our DB
+    connectionString: process.env.DATABASE_URL,
+    // Heroku also requires this special `ssl` config
+    ssl: { rejectUnauthorized: false },
+  };
+} else {
+  // If we're not on heroku, configure PG to use our local database
+  config = {
+    host: 'localhost',
+    port: 5432,
+    database: 'weekend-to-do-app', // CHANGE THIS LINE to match your local database name!
+  };
+}
 
-// how DB connection is created/configured
-const pool = new Pool ({
-    database: database,
-    host: host
-})
+// this creates the pool that will be shared by all other modules
+const pool = new pg.Pool(config);
 
-pool.on('connect', ()=> {
-    console.log(`Successfully connected to ${host} ${database}`);
-})
+// the pool will log when it connects to the database
+pool.on('connect', () => {
+  console.log('Postgesql connected');
+});
 
-pool.on('error', ()=> {
-    console.log(`Failed to connect to ${host} ${database}`, error);
-})
+// the pool with emit an error on behalf of any idle clients
+// it contains if a backend error or network partition happens
+pool.on('error', (err) => {
+  console.log('Unexpected error on idle client', err);
+  process.exit(-1);
+});
 
-// Export DB connection:
 module.exports = pool;
