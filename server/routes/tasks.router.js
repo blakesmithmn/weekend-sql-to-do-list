@@ -70,7 +70,7 @@ tasksRouter.put('/:idToUpdate', (req,res)=> {
         })
 })
 // DELETE
-tasksRouter.delete('/:<id>', (req,res)=>{
+tasksRouter.delete('/:idToDelete', (req,res)=>{
     let taskID = req.params.idToDelete;
     console.log(taskID);
 
